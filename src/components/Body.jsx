@@ -11,6 +11,7 @@ import { ResponsiveContainer } from 'recharts';
 import Title from '../functions/title';
 import ChartsBackground from './ChartsBackground';
 import RatesQtyChart from './charts/RatesQtyChart';
+import calculateAverageValue from '../functions/getIndividualAverage';
 
 function Body(params) {
     const [data, setData] = useState([]);
@@ -53,6 +54,7 @@ function Body(params) {
                         business
                     );
                 });
+                console.log(dataInstances)
                 setData(dataInstances);
             }
         });
@@ -110,7 +112,7 @@ function Body(params) {
                     </ChartsBackground>
                 </div>
                 <div style={{backgroundColor:"red", alignSelf:"center", justifyContent:"center"}}>
-                    here
+                    {calculateAverageValue(data, "value5")}
                 </div>
             </div>
         </div>
