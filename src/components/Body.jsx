@@ -12,6 +12,9 @@ import Title from '../functions/title';
 import ChartsBackground from './ChartsBackground';
 import RatesQtyChart from './charts/RatesQtyChart';
 import calculateAverageValue from '../functions/getIndividualAverage';
+import MyDashboardTable from './charts/Table';
+import PieVisitorClass from './charts/PieVisitiorsClass';
+import countBusinessKeys from '../functions/getPieValues';
 
 function Body(params) {
     const [data, setData] = useState([]);
@@ -78,45 +81,51 @@ function Body(params) {
 
 
     return (
-        <div style={{ backgroundColor: 'rgba(218,222,218,1)', borderRadius: 30, width: '80%', height: '100%' }}>
-            <Title string={"Feedback de visitantes"} />
-            <ChartsBackground>
-                <div style={{ display: 'flex', flexDirection: "row" }}>
-
-                    <div style={{ width: "25%", textAlign: "-webkit-center" }}>
-                        <ResponsiveContainer width={"100%"} height="10%">
-                            <CircleProgressBar data={averages} />
-                        </ResponsiveContainer>
-                    </div>
-                    <div style={{ width: "75%", }}>
-                        <ResponsiveContainer width={"100%"} height="10%">
-                            <RatesQtyChart itemCountByDate={itemCountByDate} />
-
-                        </ResponsiveContainer>
-                    </div>
-
-                </div>
-            </ChartsBackground>
-
-            <div style={{display:"flex", flexDirection:"row"}}>
-                <div style={{display:"flex", flexDirection:"column"}}>
-                <ChartsBackground>
-                    <div>
-                    <ResponsiveContainer width={"100%"} height="100%">
-                        <LastRates averages={averages} />
-                    </ResponsiveContainer>
-                    <ResponsiveContainer width={"100%"} height="100%">
-                        <AverageRateByDay data={averages} />
-                    </ResponsiveContainer>
-                    </div>
-                    </ChartsBackground>
-                </div>
-                <div style={{backgroundColor:"red", alignSelf:"center", justifyContent:"center"}}>
-                    {calculateAverageValue(data, "value5")}
-                </div>
+        <div style={{ backgroundColor: 'rgba(218, 222, 218, 1)', borderRadius: 30, width: '80%', height: '100%', overflow: 'hidden' }}>
+          <Title string={"Feedback de visitantes"} />
+          <ChartsBackground>
+            <div style={{ display: 'flex', flexDirection: 'row', height: '20%' }}>
+              <div style={{ width: '25%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <CircleProgressBar data={averages} />
+                </ResponsiveContainer>
+              </div>
+              <div style={{ width: '75%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <RatesQtyChart itemCountByDate={itemCountByDate} />
+                </ResponsiveContainer>
+              </div>
             </div>
+          </ChartsBackground>
+          <ResponsiveContainer width="100%" height="80%">
+            <div style={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <ChartsBackground>
+                  <div style={{ flex: 1 }}>
+                    <ResponsiveContainer width="100%" height="50%">
+                      <LastRates averages={averages} />
+                    </ResponsiveContainer>
+                    <ResponsiveContainer width="100%" height="50%">
+                      <AverageRateByDay data={averages} />
+                    </ResponsiveContainer>
+                  </div>
+                </ChartsBackground>
+              </div>
+              <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <ChartsBackground>
+                  <MyDashboardTable data={data} />
+                </ChartsBackground>
+              </div>
+              <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <ChartsBackground>
+                  <PieVisitorClass data={countBusinessKeys(data)} />
+                </ChartsBackground>
+              </div>
+            </div>
+          </ResponsiveContainer>
         </div>
-    );
+      );
+      
 }
 
 export default Body;

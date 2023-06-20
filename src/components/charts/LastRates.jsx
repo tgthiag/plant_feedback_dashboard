@@ -8,7 +8,7 @@ function LastRates({ averages }) {
     return (
         <div style={{width:"100%", height: 100}}>
             <p style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>Últimas avaliações</p>
-            <LineChart width={800} height={130} data={averages}>
+            <LineChart width={700} height={130} data={averages}>
                 {/* <YAxis domain={[0, 10]} fontSize={16}/> */}
                 <Tooltip />
                 {/* <ReferenceLine y={10} label="Max" fontSize={8}  stroke="red" strokeDasharray="3 3" /> */}

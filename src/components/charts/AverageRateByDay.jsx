@@ -37,9 +37,9 @@ function AverageRateByDay({ data }) {
   }, [data]);
 
   return (
-    <div>
+    <div style={{width:"100%"}}>
       <p style={{color:"black", fontSize: 18, fontWeight:"bold"}}>Avaliação média por dia</p>
-      <LineChart width={800} height={130} data={groupedData} title='Data da avaliação'>
+      <LineChart width={700} height={130} data={groupedData} title='Data da avaliação'>
         <XAxis dataKey={"date"}  fontSize={18}/>
         {/* <YAxis domain={[0, 10]} fontSize={16}/> */}
         <Tooltip />
