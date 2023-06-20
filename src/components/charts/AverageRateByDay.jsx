@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line } from "recharts";
+import { LineChart, CartesianGrid, XAxis, YAxis,LabelList, Tooltip, Legend, Line, ResponsiveContainer } from "recharts";
 
 function CalculateAverage(items) {
   const sum = items.reduce((total, item) => total + item.average, 0);
@@ -38,13 +38,14 @@ function AverageRateByDay({ data }) {
 
   return (
     <div>
-      <p style={{ color: "black" }}>Avaliação média por dia</p>
-      <LineChart width={1000} height={300} data={groupedData} title='teste'>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey={"date"} />
-        <YAxis domain={[0, 10]} />
+      <p style={{color:"black", fontSize: 18, fontWeight:"bold"}}>Avaliação média por dia</p>
+      <LineChart width={800} height={130} data={groupedData} title='Data da avaliação'>
+        <XAxis dataKey={"date"}  fontSize={18}/>
+        {/* <YAxis domain={[0, 10]} fontSize={16}/> */}
         <Tooltip />
-        <Line type="monotone" dataKey="average" stroke="green" strokeWidth={7} />
+        <Line type="monotone" dataKey="average" stroke="green" strokeWidth={6} >
+        <LabelList dataKey="count" position="top" fontSize={16} />
+        </Line>
       </LineChart>
     </div>
   );
