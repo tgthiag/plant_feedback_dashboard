@@ -6,6 +6,11 @@ import DataQuestions from '../data/DataQuestions';
 import { getYear, getMonth } from '../functions/getDate';
 import AverageRateByDay from './charts/AverageRateByDay';
 import LastRates from './charts/LastRates';
+import CircleProgressBar from './charts/CircleProgressBar';
+import { ResponsiveContainer } from 'recharts';
+import Title from '../functions/title';
+import ChartsBackground from './ChartsBackground';
+import RatesQtyChart from './charts/RatesQtyChart';
 
 function Body(params) {
     const [data, setData] = useState([]);
@@ -61,10 +66,53 @@ function Body(params) {
         return { ...item, average };
     });
 
+    const itemCountByDate = data.reduce((countMap, item) => {
+        const dateString = new Date(item.date).toISOString(); // Convert to ISO string
+        const [year, month, day] = dateString.split('T')[0].split('-');
+        const date = `${day}/${month}`; // Format the date as DD-MM
+        countMap[date] = (countMap[date] || 0) + 1;
+        return countMap;
+    }, {});
+
+
     return (
-        <div style={{ backgroundColor: 'rgba(218,222,218,1)', borderRadius: 30, width: '80%', height: '80vh' }}>
-            <AverageRateByDay data={averages} />
-            <LastRates averages={averages} />
+        <div style={{ backgroundColor: 'rgba(218,222,218,1)', borderRadius: 30, width: '80%', height: '100%' }}>
+            <Title string={"Feedback de visitantes"} />
+            <ChartsBackground>
+                <div style={{ display: 'flex', flexDirection: "row" }}>
+
+                    <div style={{ width: "25%", textAlign: "-webkit-center" }}>
+                        <ResponsiveContainer width={"100%"} height="10%">
+                            <CircleProgressBar data={averages} />
+                        </ResponsiveContainer>
+                    </div>
+                    <div style={{ width: "75%", }}>
+                        <ResponsiveContainer width={"100%"} height="10%">
+                            <RatesQtyChart itemCountByDate={itemCountByDate} />
+
+                        </ResponsiveContainer>
+                    </div>
+
+                </div>
+            </ChartsBackground>
+
+            <div style={{display:"flex", flexDirection:"row"}}>
+                <div style={{display:"flex", flexDirection:"column"}}>
+                <ChartsBackground>
+                    <div>
+                    <ResponsiveContainer width={"100%"} height="100%">
+                        <LastRates averages={averages} />
+                    </ResponsiveContainer>
+                    <ResponsiveContainer width={"100%"} height="100%">
+                        <AverageRateByDay data={averages} />
+                    </ResponsiveContainer>
+                    </div>
+                    </ChartsBackground>
+                </div>
+                <div style={{backgroundColor:"red", alignSelf:"center", justifyContent:"center"}}>
+                    here
+                </div>
+            </div>
         </div>
     );
 }
