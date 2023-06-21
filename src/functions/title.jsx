@@ -1,4 +1,4 @@
-function Title({string}) {
+function Title({string, onClick }) {
     return (
         <div>
             <h1 style={{
@@ -12,7 +12,7 @@ function Title({string}) {
                 fontWeight: "bold",
                 fontSize: 42,
                 transform: "translateY(-2px)",
-            }}>
+            }} onClick={onClick}>
                 {string}
                 </h1>
         </div>
