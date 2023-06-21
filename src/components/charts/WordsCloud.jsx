@@ -14,8 +14,8 @@ function WordsCloud({ rawData }) {
         const commentText = item.comment;
         if (commentText) {
           const commentWords = commentText.split(' ');
-          const filteredWords = commentWords.filter((word) => word.length > 1);
-          console.log(filteredWords)
+          const forbiddenList = ["muito", "que", "uma", "foi", "mas", "mais"]
+          const filteredWords = commentWords.filter((word) => word.length > 2 && !forbiddenList.includes(word.toLowerCase()));
           words.push(...filteredWords);
         }
       });
@@ -68,7 +68,7 @@ function WordsCloud({ rawData }) {
         data={finalData}
         width={600}
         height={400}
-        font="Times"
+        font="Arial"
         fontWeight="900"
         fontSize={fontSize}
         spiral="rectangular"
