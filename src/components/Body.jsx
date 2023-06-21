@@ -15,6 +15,7 @@ import calculateAverageValue from '../functions/getIndividualAverage';
 import MyDashboardTable from './charts/Table';
 import PieVisitorClass from './charts/PieVisitiorsClass';
 import countBusinessKeys from '../functions/getPieValues';
+import WordsCloud from './charts/WordsCloud';
 
 function Body(params) {
     const [data, setData] = useState([]);
@@ -99,7 +100,13 @@ function Body(params) {
           </ChartsBackground>
           <ResponsiveContainer width="100%" height="80%">
             <div style={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
-              <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <ChartsBackground>
+              <WordsCloud rawData={data}/>
+              </ChartsBackground>
+              </div>
+                {/* RATES BY DAY & LAST */}
+              {/* <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <ChartsBackground>
                   <div style={{ flex: 1 }}>
                     <ResponsiveContainer width="100%" height="50%">
@@ -110,7 +117,8 @@ function Body(params) {
                     </ResponsiveContainer>
                   </div>
                 </ChartsBackground>
-              </div>
+              </div> */}
+
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <ChartsBackground>
                   <MyDashboardTable data={data} />
