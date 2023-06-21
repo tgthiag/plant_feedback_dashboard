@@ -8,36 +8,36 @@ function MyDashboardTable({data}) {
         <CTable className="myTable">
             <CTableHead>
                 <CTableRow>
-                    <CTableHeaderCell scope="col">Item</CTableHeaderCell>
+                    <CTableHeaderCell className="myTableHeader" scope="col">Item</CTableHeaderCell>
                     {/* <CTableHeaderCell scope="col">⠀Tendência⠀</CTableHeaderCell> */}
-                    <CTableHeaderCell scope="col">⠀Nota⠀</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Media</CTableHeaderCell>
                 </CTableRow>
             </CTableHead>
             <CTableBody>
                 <CTableRow>
-                    <CTableHeaderCell className="myCustomRow" scope="row">Agendamento</CTableHeaderCell>
+                    <CTableHeaderCell className={calculateAverageValue(data,"value1") > 7.5 ? "myCustomRow": "myCustomRow2"} scope="row">Agendamento</CTableHeaderCell>
                     {/* <CTableDataCell>-</CTableDataCell> */}
-                    <CTableDataCell>{calculateAverageValue(data,"value1").toFixed(1)}</CTableDataCell>
+                    <CTableDataCell className={calculateAverageValue(data,"value1") > 7.5 ? "myCustomValue": "myCustomValue2"}>{calculateAverageValue(data,"value1").toFixed(1)}</CTableDataCell>
                 </CTableRow>
                 <CTableRow>
-                    <CTableDataCell className="myCustomRow"  scope="row">Condução</CTableDataCell>
+                    <CTableDataCell className={calculateAverageValue(data,"value2") > 7.5 ? "myCustomRow": "myCustomRow2"}  scope="row">Condução</CTableDataCell>
                     {/* <CTableDataCell>-</CTableDataCell> */}
-                    <CTableDataCell>{calculateAverageValue(data,"value2").toFixed(1)}</CTableDataCell>
+                    <CTableDataCell className={calculateAverageValue(data,"value2") > 7.5 ? "myCustomValue": "myCustomValue2"}>{calculateAverageValue(data,"value2").toFixed(1)}</CTableDataCell>
                 </CTableRow>
                 <CTableRow  color="secondary">
-                    <CTableHeaderCell className="myCustomRow"  scope="row">Segurança</CTableHeaderCell>
+                    <CTableHeaderCell className={calculateAverageValue(data,"value3") > 7.5 ? "myCustomRow": "myCustomRow2"}  scope="row">Segurança</CTableHeaderCell>
                     {/* <CTableDataCell>-</CTableDataCell> */}
-                    <CTableDataCell>{calculateAverageValue(data,"value3").toFixed(1)}</CTableDataCell>
+                    <CTableDataCell className={calculateAverageValue(data,"value3") > 7.5 ? "myCustomValue": "myCustomValue2"}>{calculateAverageValue(data,"value3").toFixed(1)}</CTableDataCell>
                 </CTableRow>
                 <CTableRow color="success">
-                    <CTableHeaderCell className="myCustomRow"  scope="row">5S</CTableHeaderCell>
+                    <CTableHeaderCell className={calculateAverageValue(data,"value4") > 7.5 ? "myCustomRow": "myCustomRow2"}  scope="row">5S</CTableHeaderCell>
                     {/* <CTableDataCell>-</CTableDataCell> */}
-                    <CTableDataCell>{calculateAverageValue(data,"value4").toFixed(1)}</CTableDataCell>
+                    <CTableDataCell className={calculateAverageValue(data,"value4") > 7.5 ? "myCustomValue": "myCustomValue2"}>{calculateAverageValue(data,"value4").toFixed(1)}</CTableDataCell>
                 </CTableRow>
                 <CTableRow color="danger">
-                    <CTableHeaderCell className="myCustomRow"  scope="row">Diferencial</CTableHeaderCell>
+                    <CTableHeaderCell className={calculateAverageValue(data,"value5") > 7.5 ? "myCustomRow": "myCustomRow2"}  scope="row">Diferencial</CTableHeaderCell>
                     {/* <CTableDataCell>-</CTableDataCell> */}
-                    <CTableDataCell>{calculateAverageValue(data,"value5").toFixed(1)}</CTableDataCell>
+                    <CTableDataCell className={calculateAverageValue(data,"value5") > 7.5 ? "myCustomValue": "myCustomValue2"}>{calculateAverageValue(data,"value5").toFixed(1)}</CTableDataCell>
                 </CTableRow>
             </CTableBody>
         </CTable>

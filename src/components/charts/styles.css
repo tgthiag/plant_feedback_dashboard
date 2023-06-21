@@ -5,11 +5,23 @@
     background-color: rgba(255, 255, 255, 0);
   }
 .myCustomRow {
+    background-color: rgba(0, 128, 0, 0.229);
     text-align: start;
     font-weight: 200;
 }
-
-.myOtherCustomRow {
-    font-weight: 100;
-  background-color: green;
+.myCustomRow2 {
+    background-color: rgba(128, 75, 0, 0.229);
+    text-align: start;
+    font-weight: 200;
 }
+.myCustomValue {
+    background-color: rgba(0, 128, 0, 0.229);
+    font-weight: 200;
+}
+.myCustomValue2 {
+    background-color: rgba(128, 75, 0, 0.229);
+    font-weight: 200;
+}
+.myTableHeader{
+    text-align: start;
+  }
