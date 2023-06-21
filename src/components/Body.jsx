@@ -55,7 +55,6 @@ function Body(params) {
                         business
                     );
                 });
-                console.log(dataInstances)
                 setData(dataInstances);
             }
         });
