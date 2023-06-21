@@ -4,14 +4,11 @@ import { signInAnonymously } from 'firebase/auth';
 import { auth } from '../services/firebaseRealtimeDb';
 import DataQuestions from '../data/DataQuestions';
 import { getYear, getMonth } from '../functions/getDate';
-import AverageRateByDay from './charts/AverageRateByDay';
-import LastRates from './charts/LastRates';
 import CircleProgressBar from './charts/CircleProgressBar';
 import { ResponsiveContainer } from 'recharts';
 import Title from '../functions/title';
 import ChartsBackground from './ChartsBackground';
 import RatesQtyChart from './charts/RatesQtyChart';
-import calculateAverageValue from '../functions/getIndividualAverage';
 import MyDashboardTable from './charts/Table';
 import PieVisitorClass from './charts/PieVisitiorsClass';
 import countBusinessKeys from '../functions/getPieValues';
@@ -74,7 +71,7 @@ function Body(params) {
 
     const itemCountByDate = data.reduce((countMap, item) => {
         const dateString = new Date(item.date).toISOString(); // Convert to ISO string
-        const [year, month, day] = dateString.split('T')[0].split('-');
+        const [month, day] = dateString.split('T')[0].split('-');
         const date = `${day}/${month}`; // Format the date as DD-MM
         countMap[date] = (countMap[date] || 0) + 1;
         return countMap;

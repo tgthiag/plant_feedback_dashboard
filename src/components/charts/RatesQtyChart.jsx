@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LabelList } from 'recharts';
+import { BarChart, Bar, XAxis, Tooltip, LabelList } from 'recharts';
 
 function RatesQtyChart({ itemCountByDate }) {
     const data = Object.entries(itemCountByDate).map(([date, count]) => ({ date, count }));

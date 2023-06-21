@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LineChart, CartesianGrid, XAxis, YAxis,LabelList, Tooltip, Legend, Line, ResponsiveContainer } from "recharts";
+import { LineChart, XAxis,LabelList, Tooltip, Line } from "recharts";
 
 function CalculateAverage(items) {
   const sum = items.reduce((total, item) => total + item.average, 0);
