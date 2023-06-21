@@ -71,7 +71,7 @@ function Body(params) {
 
     const itemCountByDate = data.reduce((countMap, item) => {
         const dateString = new Date(item.date).toISOString(); // Convert to ISO string
-        const [month, day] = dateString.split('T')[0].split('-');
+        const [year, month, day] = dateString.split('T')[0].split('-');
         const date = `${day}/${month}`; // Format the date as DD-MM
         countMap[date] = (countMap[date] || 0) + 1;
         return countMap;
